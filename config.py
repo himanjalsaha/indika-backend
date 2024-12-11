@@ -1,5 +1,10 @@
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from the .env file
+load_dotenv()
 
 class Config:
-    # MongoDB configuration
-    MONGO_URI = "mongodb+srv://himanjalsaha97:UvnxU2OcSgbcUsOn@cluster0.d2fy4.mongodb.net/indicaAi?retryWrites=true&w=majority&appName=Cluster0"
+    MONGO_URI = os.getenv('MONGO_URI')
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')

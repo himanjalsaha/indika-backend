@@ -3,13 +3,18 @@ import boto3
 from botocore.exceptions import NoCredentialsError, PartialCredentialsError
 from db import mongo  
 from bson.objectid import ObjectId
-s3 = boto3.client('s3')
+from config import Config
+s3 = boto3.client('s3',
+                  aws_access_key_id=Config.AWS_ACCESS_KEY_ID,
+                  aws_secret_access_key=Config.AWS_SECRET_KEY,
+                  )
+
 BUCKET_NAME = 'indica-ai'
 
 class file_contollers:
     def fetch_files_and_add_to_db():
         try:
-            response = s3.list_objects_v2(Bucket=BUCKET_NAME)
+            response = s3.list_objects_v2(Bucket=BUCKET_NAME )
             
             if 'Contents' not in response:
                 return jsonify({'error': 'No files'}), 404
