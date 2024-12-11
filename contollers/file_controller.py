@@ -23,7 +23,7 @@ class file_contollers:
             for obj in response['Contents']:
                 video_url = s3.generate_presigned_url('get_object',
                                                     Params={'Bucket': BUCKET_NAME, 'Key': obj['Key']},
-                                                    ExpiresIn=3600)
+                                                    ExpiresIn=8600)
                 files_meta = {
                     'file_name': obj['Key'],
                     'file_size': obj['Size'],
