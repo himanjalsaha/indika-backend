@@ -44,6 +44,8 @@ which I fixed by writing custom aws rules
 
 3) had no unique attribute in response , after adding database added the object key as unique key
 
+4) Learned to implement time-limited secure access to S3 objects.
+
 
 scope 
 
