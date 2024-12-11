@@ -67,7 +67,7 @@ class file_contollers:
     def fetch_file_by_id():
         try:
            
-            file_id = request.args.get('id')  # Assuming you pass the ID as a query parameter
+            file_id = request.args.get('id') 
             
             if not file_id:
                 return jsonify({'error': 'File ID is required'}), 400
