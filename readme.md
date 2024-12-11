@@ -27,13 +27,14 @@ here most the logic iswritteno in the controller
 
 ## challenges 
 
-1) spent too muchtimet tinkering with aws 
-and configuration but still managed to do it 
+1) spent too much time tinkering with aws 
+and configuration but still managed to do it
 
-2)afterx deploying I had an authorisation error 
+
+2)after deploying I had an authorisation error 
 which I fixed by writing custom aws rules 
 
-3) other than that kept the logic simplea
+3) had no unique attribute in response , after adding database added the object key as unique key
 
 
 scope 
