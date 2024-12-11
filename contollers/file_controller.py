@@ -23,9 +23,10 @@ class file_contollers:
             for obj in response['Contents']:
                 video_url = s3.generate_presigned_url('get_object',
                                                     Params={'Bucket': BUCKET_NAME, 'Key': obj['Key']},
-                                                    ExpiresIn=20)
+                                                    ExpiresIn=8600)
                 files_meta = {
                     'file_name': obj['Key'],
+                    
                     'file_size': obj['Size'],
                     'last_modified': obj['LastModified'],
                     'link': video_url,
@@ -67,7 +68,7 @@ class file_contollers:
     def fetch_file_by_id():
         try:
            
-            file_id = request.args.get('id')  # Assuming you pass the ID as a query parameter
+            file_id = request.args.get('id')  
             
             if not file_id:
                 return jsonify({'error': 'File ID is required'}), 400
@@ -94,3 +95,33 @@ class file_contollers:
         except Exception as e:
             return jsonify({'error': str(e)}), 500
         
+
+    def search_files_by_name():
+            try:
+                search_query = request.args.get('query')
+
+                if not search_query:
+                    return jsonify({'error': 'queru missing'}), 400
+
+                files = mongo.db.metadata.find({
+                    'file_name': {'$regex': search_query, '$options': 'i'}  
+                })
+
+                result = []
+                for file in files:
+                    result.append({
+                        '_id': str(file['_id']),
+                        'file_name': file['file_name'],
+                        'file_size': file['file_size'],
+                        'last_modified': file['last_modified'],
+                        'link': file['link'],
+                        'metadata': file['metadata']
+                    })
+
+                if not result:
+                    return jsonify({'error': 'No files '}), 404
+
+                return jsonify(result), 200
+
+            except Exception as e:
+                return jsonify({'error': str(e)}), 500

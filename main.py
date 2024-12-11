@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 from config import Config
-from db import mongo  # Import the PyMongo instance
+from db import mongo 
 from routes.file_routes import file_routes
 
 app = Flask(__name__)
