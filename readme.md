@@ -1,5 +1,13 @@
 created a flask backend
 
+```
+pip install requirements.txt
+````
+
+```
+python main.py
+````
+
 intuition was pretty Straight-forward
 
 I'm fairly new to aws and after going through the documentation I was able to spin a s3 bucket and upload files on it
