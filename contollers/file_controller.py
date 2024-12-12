@@ -38,6 +38,8 @@ class file_contollers:
     'file_size': files_meta['file_size'],
     'last_modified': files_meta['last_modified'],
     'link': files_meta['link'],
+                        "metadata": response["ResponseMetadata"]
+
      }
 
                 files.append(file_info)
